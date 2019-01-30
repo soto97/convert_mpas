@@ -1,7 +1,9 @@
 FC = gfortran
 FFLAGS = -O2 -ffree-form -Wall -DHAVE_NF90_INQ_VARIDS
-FCINCLUDES = $(shell nc-config --fflags)
-FCLIBS = $(shell nc-config --flibs)
+#FCINCLUDES = $(shell nc-config --fflags)
+#FCLIBS = $(shell nc-config --flibs)
+FCINCLUDES = -I${NETCDF}/include
+FCLIBS = -lnetcdff -lnetcdf
 
 all:
 	( cd src; $(MAKE) FC="$(FC)" FFLAGS="$(FFLAGS)" FCINCLUDES="$(FCINCLUDES)" FCLIBS="$(FCLIBS)" )
